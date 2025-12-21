@@ -1,0 +1,62 @@
+  @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Tajawal', 'Inter', sans-serif;
+  background: #faf8f5;
+  min-height: 100vh;
+  overflow-x: hidden;
+  direction: rtl;
+  text-align: right;
+  position: relative;
+}
+
+/* Gold tech background image */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/bg-tech.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.4;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Arabic Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Tajawal', sans-serif;
+  font-weight: 700;
+}
+
+p, span, a {
+  font-family: 'Tajawal', sans-serif;
+  line-height: 1.8;
+}
+
+/* Card styles */
+.service-card {
+  transition: all 0.3s ease;
+  background: #ffefd6;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
