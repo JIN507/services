@@ -93,9 +93,9 @@ function ServiceCard({ service, index }) {
       viewport={{ once: true }}
       className="service-card group cursor-pointer"
     >
-      <div className="relative bg-gradient-to-br from-white to-amber-50/50 backdrop-blur-sm rounded-3xl overflow-hidden border border-amber-100/50 shadow-lg shadow-amber-900/5 hover:shadow-xl hover:shadow-amber-900/10 transition-all duration-500 flex flex-row-reverse">
+      <div className="relative bg-white backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-200/50 shadow-lg shadow-slate-900/5 hover:shadow-xl hover:shadow-slate-900/10 transition-all duration-500 flex flex-row-reverse">
         {/* Image container with hover effect */}
-        <div className="relative overflow-hidden w-2/5 min-h-[200px] bg-gradient-to-br from-amber-50 to-amber-100/50">
+        <div className="relative overflow-hidden w-2/5 min-h-[200px] bg-slate-50">
           {/* Logo - visible by default, hidden on hover */}
           <div className="absolute inset-0 flex items-center justify-center p-6 transition-opacity duration-500 group-hover:opacity-0">
             <div className="w-24 h-24 rounded-2xl bg-white shadow-md flex items-center justify-center overflow-hidden">
@@ -119,11 +119,11 @@ function ServiceCard({ service, index }) {
         </div>
         {/* Content */}
         <div className="p-6 flex-1 flex flex-col justify-center">
-          <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-amber-700 transition-colors duration-300">{service.title}</h3>
+          <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-slate-500 transition-colors duration-300">{service.title}</h3>
           <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">{service.description}</p>
           <a
             href={service.link}
-            className="inline-flex items-center gap-2 text-amber-600 hover:text-amber-700 font-semibold text-sm transition-all duration-300 group/link"
+            className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-600 font-semibold text-sm transition-all duration-300 group/link"
           >
             إنتقل
             <ExternalLink className="w-4 h-4 transition-transform group-hover/link:-translate-x-1" />
@@ -147,12 +147,12 @@ function App() {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl"
           >
-            <span className="text-amber-700 font-medium tracking-widest text-sm uppercase mb-4 block">
+            <span className="text-slate-500 font-medium tracking-widest text-sm uppercase mb-4 block">
               المشاريع ونبذة عنها
             </span>
             <h1 className="text-5xl md:text-7xl font-bold text-gray-800 mb-6 leading-tight">
               تمكين رحلتك
-              <span className="block text-amber-700">الرقمية</span>
+              <span className="block text-slate-500">الرقمية</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-10">
               نقدم حلولًا رقمية مبتكرة ترتقي بتجربة المستخدم وتُبسّط سير  العمل بكفاءة.
@@ -164,7 +164,7 @@ function App() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5 }}
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-amber-700 transition-colors"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-slate-500 transition-colors"
             >
               <span className="text-sm font-medium">اكتشف</span>
               <ArrowRight className="w-4 h-4 animate-bounce" />
@@ -181,7 +181,7 @@ function App() {
             viewport={{ once: true }}
             className="text-center mb-4"
           >
-            <span className="text-amber-700 font-medium tracking-widest text-sm uppercase mb-4 block">
+            <span className="text-slate-500 font-medium tracking-widest text-sm uppercase mb-4 block">
               الخدمات
             </span>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-800">خدماتنا</h2>
