@@ -56,7 +56,7 @@ const services = [
     description: "دليلك الاحترافي لفهم خوارزمية X وتحليل ردودك للوصول إلى القمة",
     image: "/images/t9dr.png",
     logo: "/images/logos/t9dr logo.png",
-    link: "https://tasaddar-783715999588.us-west1.run.app/"
+    link: "https://t-1055660716199.us-west1.run.app/"
   },
   {
     id: 8,
