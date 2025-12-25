@@ -1,5 +1,10 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, ExternalLink } from 'lucide-react'
+import { useEffect, useRef } from 'react'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const services = [
   {
@@ -135,41 +140,115 @@ function ServiceCard({ service, index }) {
 }
 
 function App() {
+  const heroRef = useRef(null)
+  const subtitleRef = useRef(null)
+  const titleRef = useRef(null)
+  const titleAccentRef = useRef(null)
+  const descRef = useRef(null)
+  const ctaRef = useRef(null)
+  const bgGlowRef = useRef(null)
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Hero text animations - line by line, RTL friendly
+      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
+
+      // Animate each element with stagger
+      tl.fromTo(subtitleRef.current,
+        { opacity: 0, x: 50 },
+        { opacity: 1, x: 0, duration: 0.8 }
+      )
+      .fromTo(titleRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 1 },
+        '-=0.4'
+      )
+      .fromTo(titleAccentRef.current,
+        { opacity: 0, x: 50 },
+        { opacity: 1, x: 0, duration: 0.8 },
+        '-=0.5'
+      )
+      .fromTo(descRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1 },
+        '-=0.4'
+      )
+      .fromTo(ctaRef.current,
+        { opacity: 0, scale: 0.9 },
+        { opacity: 1, scale: 1, duration: 0.6 },
+        '-=0.3'
+      )
+
+      // Background glow animation on scroll
+      gsap.to(bgGlowRef.current, {
+        opacity: 0.15,
+        duration: 2,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: '#services',
+          start: 'top 80%',
+          end: 'top 20%',
+          scrub: 1,
+          toggleActions: 'play none none reverse'
+        }
+      })
+
+      // Subtle pulsing glow effect
+      gsap.to(bgGlowRef.current, {
+        filter: 'blur(80px) brightness(1.3)',
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: 'sine.inOut'
+      })
+    }, heroRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
-    <div className="relative min-h-screen">
+    <div ref={heroRef} className="relative min-h-screen">
+      {/* Background glow overlay */}
+      <div
+        ref={bgGlowRef}
+        className="fixed inset-0 pointer-events-none z-[1] opacity-0"
+        style={{
+          background: 'radial-gradient(ellipse at center, rgba(148, 163, 184, 0.3) 0%, transparent 70%)',
+          filter: 'blur(60px)'
+        }}
+      />
       {/* Content */}
       <div className="relative z-10">
         {/* Hero Section */}
         <header className="min-h-[60vh] flex flex-col items-center justify-center px-6 py-20">
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl"
-          >
-            <span className="text-slate-500 font-medium tracking-widest text-sm uppercase mb-4 block">
+          <div className="text-center max-w-4xl">
+            <span
+              ref={subtitleRef}
+              className="text-slate-500 font-medium tracking-widest text-sm uppercase mb-4 block opacity-0"
+            >
               المشاريع ونبذة عنها
             </span>
             <h1 className="text-5xl md:text-7xl font-bold text-gray-800 mb-6 leading-tight">
-              تمكين رحلتك
-              <span className="block text-slate-500">الرقمية</span>
+              <span ref={titleRef} className="block opacity-0">تمكين رحلتك</span>
+              <span ref={titleAccentRef} className="block text-slate-500 opacity-0">الرقمية</span>
             </h1>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-10">
+            <p
+              ref={descRef}
+              className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-10 opacity-0"
+            >
               نقدم حلولًا رقمية مبتكرة ترتقي بتجربة المستخدم وتُبسّط سير  العمل بكفاءة.
               نعتمد منهجية احترافية تجمع بين الإبداع والدقة، ونطوّر منصات وأدوات ذكية
               تدعم التحول الرقمي وتعزّز الأتمتة لرفع الأداء وتحقيق نتائج قابلة للقياس.
             </p>
-            <motion.a
+            <a
+              ref={ctaRef}
               href="#services"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.5 }}
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-slate-500 transition-colors"
+              className="inline-flex items-center gap-2 text-gray-600 hover:text-slate-500 transition-colors opacity-0"
             >
               <span className="text-sm font-medium">اكتشف</span>
               <ArrowRight className="w-4 h-4 animate-bounce" />
-            </motion.a>
-          </motion.div>
+            </a>
+          </div>
         </header>
 
         {/* Services Section */}
