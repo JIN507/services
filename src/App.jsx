@@ -7,16 +7,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const services = [
-  {
+    {
     id: 1,
-    title: "منصة عين",
-    description: "منصّة إلكترونية تهدف إلى مساعدة المستخدمين على متابعة والاطّلاع على الأحداث العالمية عبر مصادر صحفية رسمية وغير رسمية من عدّة دول. ",
-    image: "/images/ain.png",
-    logo: "/images/logos/ain logo.png",
-    link: "https://ain-4m6r.onrender.com/"
-  },
-  {
-    id: 2,
     title: "منصة خطى",
     description: "هي منصة احترافية داخلية لإدارة الاعمال ومتابعتها داخل الادارة",
     image: "/images/steps.png",
@@ -24,15 +16,31 @@ const services = [
     link: "http://192.168.8.210/"
   },
   {
+    id: 2,
+    title: "منصة عين",
+    description: "منصّة إلكترونية تهدف إلى مساعدة المستخدمين على متابعة والاطّلاع على الأحداث العالمية عبر مصادر صحفية رسمية وغير رسمية من عدّة دول. ",
+    image: "/images/ain.png",
+    logo: "/images/logos/ain logo.png",
+    link: "https://ain-4m6r.onrender.com/"
+  },
+  {
     id: 3,
-    title: "راقب",
-    description: "هو موقع يهتم يجلب الوسوم حسب الدوله وكلمات دلاليه ويقوم بحفظ الوسم وعدد تغريداته ودولته او مدينته والوقت والتاريخ في قاعده بيانات ويقوم بارسال تنبيه لجهاز المستخدم وايضا بواسطة التيليقرام",
-    image: "/images/watcher.png",
-    logo: "/images/logos/watcher logo.png",
-    link: "http://46.202.140.7:8501/"
+    title: "استديو الصور",
+    description: "موقع يحتوي على عدة انماط للتعديل علة الصور والتصميم الداخلي، حيث يستعرض لك جميع الانماط الفنية والابعاد المناسبة وبعض المزايا الاضافية.",
+    image: "/images/studio.png",
+    logo: "/images/logos/studio logo.png",
+    link: "https://m-783715999588.us-west1.run.app/"
   },
   {
     id: 4,
+    title: "تصدر",
+    description: "دليلك الاحترافي لفهم خوارزمية X وتحليل ردودك للوصول إلى القمة",
+    image: "/images/t9dr.png",
+    logo: "/images/logos/t9dr logo.png",
+    link: "https://t-1055660716199.us-west1.run.app/"
+  },
+  {
+    id: 5,
     title: "تعليقات جاكو",
     description: "هو موقع يقوم بتفريغ النص من الفيديو المنشور على منصة جاكو ثم يقترح ردود مناسبة",
     image: "/images/jako.png",
@@ -40,29 +48,22 @@ const services = [
     link: "http://46.202.140.7:5003/"
   },
   {
-    id: 5,
-    title: "قياس متوسط التفاعل",
-    description: "هو نظام محلي لتحليل تفاعل الحسابات على منصة  أكس من حيث معدل التفاعل، وقياس قوة المحتوى",
-    image: "/images/qyas.png",
-    logo: "/images/logos/qyas logo.png",
-    link: "http://46.202.140.7:8888/"
+    id: 6,
+    title: "راقب",
+    description: "هو موقع يهتم يجلب الوسوم حسب الدوله وكلمات دلاليه ويقوم بحفظ الوسم وعدد تغريداته ودولته او مدينته والوقت والتاريخ في قاعده بيانات",
+    image: "/images/watcher.png",
+    logo: "/images/logos/watcher logo.png",
+    link: "http://46.202.140.7:8501/"
   },
   {
-    id: 6,
+    id: 7,
     title: "تحقق",
     description: "موقع إلكتروني يهدف إلى مساعدة المستخدمين في التحقّق من صحّة المحتوى الرقمي، خاصة الصور والفيديوهات والأخبار.",
     image: "/images/t788.png",
     logo: "/images/logos/t788 logo.png",
     link: "https://mns-thqq.onrender.com/"
   },
-  {
-    id: 7,
-    title: "تصدر",
-    description: "دليلك الاحترافي لفهم خوارزمية X وتحليل ردودك للوصول إلى القمة",
-    image: "/images/t9dr.png",
-    logo: "/images/logos/t9dr logo.png",
-    link: "https://t-1055660716199.us-west1.run.app/"
-  },
+
   {
     id: 8,
     title: "مولد الهوية بالذكاء الاصطناعي",
@@ -73,11 +74,11 @@ const services = [
   },
   {
     id: 9,
-    title: "استديو الصور",
-    description: "موقع يحتوي على عدة انماط للتعديل علة الصور والتصميم الداخلي، حيث يستعرض لك جميع الانماط الفنية والابعاد المناسبة وبعض المزايا الاضافية.",
-    image: "/images/studio.png",
-    logo: "/images/logos/studio logo.png",
-    link: "https://m-783715999588.us-west1.run.app/"
+    title: "قياس متوسط التفاعل",
+    description: "هو نظام محلي لتحليل تفاعل الحسابات على منصة  أكس من حيث معدل التفاعل، وقياس قوة المحتوى",
+    image: "/images/qyas.png",
+    logo: "/images/logos/qyas logo.png",
+    link: "http://46.202.140.7:8888/"
   },
   {
     id: 10,
@@ -86,6 +87,14 @@ const services = [
     image: "/images/checker.png",
     logo: "/images/logos/checker logo.png",
     link: "https://rnd1989.netlify.app/"
+  },
+  {
+    id: 11,
+    title: "عين كاست",
+    description: "منصة بودكاست عربية تتيح للمستخدمين إنشاء، نشر، وتعديل حلقات بودكاست متنوعة بسهولة.",
+    image: "/images/aincast.png",
+    logo: "/images/logos/aincastlogo.ico",
+    link: "https://audio-orb-1055660716199.us-west1.run.app/"
   }
 ]
 
@@ -276,7 +285,7 @@ function App() {
 
         {/* Footer */}
         <footer className="py-12 text-center text-gray-500 text-sm">
-          <p>&copy; 2025</p>
+          <p>&copy; 2026</p>
         </footer>
       </div>
     </div>
