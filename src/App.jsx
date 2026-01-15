@@ -10,7 +10,7 @@ const services = [
     {
     id: 1,
     title: "منصة خطى",
-    description: "هي منصة احترافية داخلية لإدارة الاعمال ومتابعتها داخل الادارة",
+    description: "منصة مصممة لمتابعة الأعمال والمهام وتوثيقها وعرض إحصائيات تصويرية ورقمية للبيانات و تييسر حركة سير العمل الإداري",
     image: "/images/steps.png",
     logo: "/images/logos/steps logo.png",
     link: "http://192.168.8.210/"
@@ -18,50 +18,50 @@ const services = [
   {
     id: 2,
     title: "منصة عين",
-    description: "منصّة إلكترونية تهدف إلى مساعدة المستخدمين على متابعة والاطّلاع على الأحداث العالمية عبر مصادر صحفية رسمية وغير رسمية من عدّة دول. ",
+    description: "منصّة إلكترونية تهدف إلى مساعدة المستخدمين على متابعة والاطّلاع على الأحداث العالمية والمحلية عبر مصادر صحفية رسمية وغير رسمية من عدّة دول. ",
     image: "/images/ain.png",
     logo: "/images/logos/ain logo.png",
     link: "https://ain-4m6r.onrender.com/"
   },
-  {
+    {
     id: 3,
+    title: "تحقق",
+    description: "موقع إلكتروني يهدف إلى مساعدة المستخدمين في التحقّق من صحّة المحتوى الرقمي  الصور,الفيديوهات,الأخبار والصوت بكل سهولة.",
+    image: "/images/t788.png",
+    logo: "/images/logos/t788 logo.png",
+    link: "https://mns-thqq.onrender.com/"
+  },
+  {
+    id: 4,
     title: "استديو الصور",
-    description: "موقع يحتوي على عدة انماط للتعديل علة الصور والتصميم الداخلي، حيث يستعرض لك جميع الانماط الفنية والابعاد المناسبة وبعض المزايا الاضافية.",
+    description: "موقع شامل لتعديل الصور وإنشاءها والعديد من الوظائف:استعراض الزوايا,تعديل الأنماط,التصميم الداخلي والكثير من الخصائص الفنية.",
     image: "/images/studio.png",
     logo: "/images/logos/studio logo.png",
     link: "https://m-783715999588.us-west1.run.app/"
   },
   {
-    id: 4,
+    id: 5,
     title: "تصدر",
-    description: "دليلك الاحترافي لفهم خوارزمية X وتحليل ردودك للوصول إلى القمة",
+    description: "موقع مساعد لتحسين وكشف أخطاء وقياس نقاط الضعف والقوة للردود على منصة  X لتكون الردود أكثر جذبا للتفاعل",
     image: "/images/t9dr.png",
     logo: "/images/logos/t9dr logo.png",
     link: "https://t-1055660716199.us-west1.run.app/"
   },
   {
-    id: 5,
+    id: 6,
     title: "تعليقات جاكو",
-    description: "هو موقع يقوم بتفريغ النص من الفيديو المنشور على منصة جاكو ثم يقترح ردود مناسبة",
+    description: "موقع مصمم لتفريغ الفيديو من منصة جاكو وقرائته وفهم محتواياته لإنشاء تعليقات مناسبة وفريدة لكل فيديو",
     image: "/images/jako.png",
     logo: "/images/logos/jaco logo.png",
     link: "http://46.202.140.7:5003/"
   },
   {
-    id: 6,
+    id: 7,
     title: "راقب",
     description: "هو موقع يهتم يجلب الوسوم حسب الدوله وكلمات دلاليه ويقوم بحفظ الوسم وعدد تغريداته ودولته او مدينته والوقت والتاريخ في قاعده بيانات",
     image: "/images/watcher.png",
     logo: "/images/logos/watcher logo.png",
     link: "http://46.202.140.7:8501/"
-  },
-  {
-    id: 7,
-    title: "تحقق",
-    description: "موقع إلكتروني يهدف إلى مساعدة المستخدمين في التحقّق من صحّة المحتوى الرقمي، خاصة الصور والفيديوهات والأخبار.",
-    image: "/images/t788.png",
-    logo: "/images/logos/t788 logo.png",
-    link: "https://mns-thqq.onrender.com/"
   },
 
   {
@@ -72,30 +72,33 @@ const services = [
     logo: "/images/logos/hawiah logo.png",
     link: "https://copy-of-783715999588.us-west1.run.app/"
   },
+
   {
     id: 9,
-    title: "قياس متوسط التفاعل",
-    description: "هو نظام محلي لتحليل تفاعل الحسابات على منصة  أكس من حيث معدل التفاعل، وقياس قوة المحتوى",
-    image: "/images/qyas.png",
-    logo: "/images/logos/qyas logo.png",
-    link: "http://46.202.140.7:8888/"
-  },
-  {
-    id: 10,
     title: "مدقق المحتوى",
     description: "هو موقع يقوم بتدقيق وتحليل المحتوى بناء على عدة عوامل ويصدر تقرير تفصيلي بذلك.",
     image: "/images/checker.png",
     logo: "/images/logos/checker logo.png",
     link: "https://rnd1989.netlify.app/"
   },
+
   {
-    id: 11,
+    id: 10,
     title: "عين كاست",
-    description: "منصة بودكاست عربية تتيح للمستخدمين إنشاء، نشر، وتعديل حلقات بودكاست متنوعة بسهولة.",
+    description: " منصة بودكاست عربية تتيح للمستخدمين إنشاء، نشر، وتعديل حلقات بودكاست متنوعة حوارية أو فردية نصا او صوت.",
     image: "/images/aincast.png",
     logo: "/images/logos/aincastlogo.ico",
     link: "https://audio-orb-1055660716199.us-west1.run.app/"
-  }
+  },
+
+  {
+    id: 11,
+    title: "قياس متوسط التفاعل",
+    description: "هو نظام محلي لتحليل تفاعل الحسابات على منصة  أكس من حيث معدل التفاعل، وقياس قوة المحتوى",
+    image: "/images/qyas.png",
+    logo: "/images/logos/qyas logo.png",
+    link: "http://46.202.140.7:8888/"
+  },
 ]
 
 function ServiceCard({ service, index }) {
