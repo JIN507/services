@@ -10,7 +10,7 @@ const services = [
     {
     id: 1,
     title: "منصة خطى",
-    description: "منصة مصممة لمتابعة الأعمال والمهام وتوثيقها وعرض إحصائيات تصويرية ورقمية للبيانات و تييسر حركة سير العمل الإداري",
+    description: " منصة مصممة لمتابعة الأعمال والمهام وتوثيقها وعرض إحصائيات تصويرية ورقمية للبيانات و تييسر حركة سير العمل الإداري وأرشفة الأعمال اليومية",
     image: "/images/steps.png",
     logo: "/images/logos/steps logo.png",
     link: "http://192.168.8.210/"
@@ -31,21 +31,21 @@ const services = [
     logo: "/images/logos/t788 logo.png",
     link: "https://mns-thqq.onrender.com/"
   },
-  {
+    {
     id: 4,
-    title: "استديو الصور",
-    description: "موقع شامل لتعديل الصور وإنشاءها والعديد من الوظائف:استعراض الزوايا,تعديل الأنماط,التصميم الداخلي والكثير من الخصائص الفنية.",
-    image: "/images/studio.png",
-    logo: "/images/logos/studio logo.png",
-    link: "https://m-783715999588.us-west1.run.app/"
+    title: "مدقق المحتوى",
+    description: "هو موقع يقوم بتدقيق وتحليل المحتوى بناء على عدة عوامل ويصدر تقرير تفصيلي بذلك.",
+    image: "/images/checker.png",
+    logo: "/images/logos/checker logo.png",
+    link: "https://rnd1989.netlify.app/"
   },
-  {
+{
     id: 5,
-    title: "تصدر",
-    description: "موقع مساعد لتحسين وكشف أخطاء وقياس نقاط الضعف والقوة للردود على منصة  X لتكون الردود أكثر جذبا للتفاعل",
-    image: "/images/t9dr.png",
-    logo: "/images/logos/t9dr logo.png",
-    link: "https://t-1055660716199.us-west1.run.app/"
+    title: "عين كاست",
+    description: "نظام بودكاست يعتمد على الذكاء الاصطناعي لتمكين إنتاج محتوى صوتي  بكفاءة,المعالجة الصوتية، التحرير، تحسين الجودة،وإدارة المحتوى،",
+    image: "/images/aincast.png",
+    logo: "/images/logos/aincastlogo.ico",
+    link: "https://audio-orb-1055660716199.us-west1.run.app/"
   },
   {
     id: 6,
@@ -57,48 +57,46 @@ const services = [
   },
   {
     id: 7,
+    title: "تصدر",
+    description: "موقع مساعد لتحسين وكشف أخطاء وقياس نقاط الضعف والقوة للردود على منصة  X لتكون الردود أكثر جذبا للتفاعل",
+    image: "/images/t9dr.png",
+    logo: "/images/logos/t9dr logo.png",
+    link: "https://t-1055660716199.us-west1.run.app/"
+  },
+
+  {
+    id: 8,
     title: "راقب",
     description: "هو موقع يهتم يجلب الوسوم حسب الدوله وكلمات دلاليه ويقوم بحفظ الوسم وعدد تغريداته ودولته او مدينته والوقت والتاريخ في قاعده بيانات",
     image: "/images/watcher.png",
     logo: "/images/logos/watcher logo.png",
     link: "http://46.202.140.7:8501/"
   },
-
-  {
-    id: 8,
-    title: "مولد الهوية بالذكاء الاصطناعي",
-    description: "موقع يقوم بتوليد هوية متكاملة بواسطة الذكاء الاصطناعي ، حيث يولد صورة مناسبة مع هيدر وصورة بايو تتناسب مع شخصية وتوجه الحساب.",
-    image: "/images/hawiah.png",
-    logo: "/images/logos/hawiah logo.png",
-    link: "https://copy-of-783715999588.us-west1.run.app/"
-  },
-
   {
     id: 9,
-    title: "مدقق المحتوى",
-    description: "هو موقع يقوم بتدقيق وتحليل المحتوى بناء على عدة عوامل ويصدر تقرير تفصيلي بذلك.",
-    image: "/images/checker.png",
-    logo: "/images/logos/checker logo.png",
-    link: "https://rnd1989.netlify.app/"
-  },
-
-  {
-    id: 10,
-    title: "عين كاست",
-    description: " منصة بودكاست عربية تتيح للمستخدمين إنشاء، نشر، وتعديل حلقات بودكاست متنوعة حوارية أو فردية نصا او صوت.",
-    image: "/images/aincast.png",
-    logo: "/images/logos/aincastlogo.ico",
-    link: "https://audio-orb-1055660716199.us-west1.run.app/"
-  },
-
-  {
-    id: 11,
     title: "قياس متوسط التفاعل",
     description: "هو نظام محلي لتحليل تفاعل الحسابات على منصة  أكس من حيث معدل التفاعل، وقياس قوة المحتوى",
     image: "/images/qyas.png",
     logo: "/images/logos/qyas logo.png",
     link: "http://46.202.140.7:8888/"
   },
+  {
+    id: 10,
+    title: "مولد الهوية بالذكاء الاصطناعي",
+    description: "موقع يقوم بتوليد هوية متكاملة بواسطة الذكاء الاصطناعي ، حيث يولد صورة مناسبة مع هيدر وصورة بايو تتناسب مع شخصية وتوجه الحساب.",
+    image: "/images/hawiah.png",
+    logo: "/images/logos/hawiah logo.png",
+    link: "https://copy-of-783715999588.us-west1.run.app/"
+  },
+  {
+    id: 11,
+    title: "استديو الصور",
+    description: "موقع شامل لتعديل الصور وإنشاءها والعديد من الوظائف:استعراض الزوايا,تعديل الأنماط,التصميم الداخلي والكثير من الخصائص الفنية.",
+    image: "/images/studio.png",
+    logo: "/images/logos/studio logo.png",
+    link: "https://m-783715999588.us-west1.run.app/"
+  },
+
 ]
 
 function ServiceCard({ service, index }) {
@@ -279,7 +277,7 @@ function App() {
           </motion.div>
 
           {/* All cards in 2-column grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <div className="grid grid-cols-2 lg:grid-cols-2 gap-20">
             {services.map((service, index) => (
               <ServiceCard key={service.id} service={service} index={index} />
             ))}
@@ -287,7 +285,7 @@ function App() {
         </section>
 
         {/* Footer */}
-        <footer className="py-12 text-center text-gray-500 text-sm">
+        <footer className="py-12 text-center text-gray-550 text-sm">
           <p>&copy; 2026</p>
         </footer>
       </div>
