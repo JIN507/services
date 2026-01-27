@@ -1,32 +1,38 @@
-  @tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-navy: #0F172B;
-  --color-blue-gray: #485466;
-  --color-text-gray: #6B7280;
-  --color-bg-light: #F7F9FC;
+@layer base {
+  :root {
+    --color-bg-light: #F8FAFC;
+    --color-bg-dark: #020617;
+  }
+
+  body {
+    @apply bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-slate-50 font-tajawal transition-colors duration-300;
+    direction: rtl;
+    text-align: right;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
 }
 
-body {
-  font-family: 'Tajawal', 'Inter', sans-serif;
-  background-color: var(--color-bg-light);
-  color: var(--color-navy);
-  min-height: 100vh;
-  overflow-x: hidden;
-  direction: rtl;
-  text-align: right;
+/* Custom Scrollbar for Webkit */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-/* Typography Overrides */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Tajawal', sans-serif;
-  font-weight: 700;
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
 }
 
-/* Smooth Scroll */
-html {
-  scroll-behavior: smooth;
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-300 dark:bg-navy-700 rounded-full;
 }
 
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-400 dark:bg-navy-600;
+}
