@@ -8,7 +8,11 @@ export default {
     extend: {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
+        tajawal: ['Tajawal', 'sans-serif'],
       },
+      colors: {
+        navy: '#0F172B',
+      }
     },
   },
   plugins: [],

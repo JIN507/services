@@ -1,13 +1,8 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, ExternalLink } from 'lucide-react'
-import { useEffect, useRef } from 'react'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
+import { ArrowLeft, ExternalLink } from 'lucide-react'
 
 const services = [
-    {
+  {
     id: 1,
     title: "منصة خطى",
     description: " منصة مصممة لمتابعة الأعمال والمهام وتوثيقها وعرض إحصائيات تصويرية ورقمية للبيانات و تييسر حركة سير العمل الإداري وأرشفة الأعمال اليومية",
@@ -23,7 +18,7 @@ const services = [
     logo: "/images/logos/ain logo.png",
     link: "https://ain-4m6r.onrender.com/"
   },
-    {
+  {
     id: 3,
     title: "تحقق",
     description: "موقع إلكتروني يهدف إلى مساعدة المستخدمين في التحقّق من صحّة المحتوى الرقمي  الصور,الفيديوهات,الأخبار والصوت بكل سهولة.",
@@ -31,7 +26,7 @@ const services = [
     logo: "/images/logos/t788 logo.png",
     link: "https://mns-thqq.onrender.com/"
   },
-    {
+  {
     id: 4,
     title: "مدقق المحتوى",
     description: "هو موقع يقوم بتدقيق وتحليل المحتوى بناء على عدة عوامل ويصدر تقرير تفصيلي بذلك.",
@@ -39,7 +34,7 @@ const services = [
     logo: "/images/logos/checker logo.png",
     link: "https://rnd1989.netlify.app/"
   },
-{
+  {
     id: 5,
     title: "عين كاست",
     description: "نظام بودكاست يعتمد على الذكاء الاصطناعي لتمكين إنتاج محتوى صوتي  بكفاءة,المعالجة الصوتية، التحرير، تحسين الجودة،وإدارة المحتوى،",
@@ -104,193 +99,121 @@ function ServiceCard({ service, index }) {
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay: index * 0.05 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
       viewport={{ once: true }}
-      className="service-card group cursor-pointer"
+      className="bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-slate-300 shadow-md hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 flex flex-col h-[320px] md:h-[340px] group"
     >
-      <div className="relative bg-white backdrop-blur-sm rounded-3xl overflow-hidden border border-slate-200/50 shadow-lg shadow-slate-900/5 hover:shadow-xl hover:shadow-slate-900/10 transition-all duration-500 flex flex-row-reverse">
-        {/* Image container with hover effect */}
-        <div className="relative overflow-hidden w-2/5 min-h-[200px] bg-slate-50">
-          {/* Logo - visible by default, hidden on hover */}
-          <div className="absolute inset-0 flex items-center justify-center p-6 transition-opacity duration-500 group-hover:opacity-0">
-            <div className="w-24 h-24 rounded-2xl bg-white shadow-md flex items-center justify-center overflow-hidden">
-              <img
-                src={service.logo}
-                alt={`${service.title} logo`}
-                className="w-[85%] h-[85%] object-contain scale-110"
-                onError={(e) => {
-                  e.target.src = service.image;
-                  e.target.className = "w-full h-full object-cover";
-                }}
-              />
-            </div>
-          </div>
-          {/* Full image - hidden by default, visible on hover */}
+      {/* Top Media Area */}
+      <div className="relative h-[40%] bg-[#0F172B] overflow-hidden">
+        {/* Main Image */}
+        <div className="absolute inset-2 bottom-0 bg-slate-100 rounded-t-xl overflow-hidden border-t-4 border-x-4 border-[#0F172B]">
           <img
             src={service.image}
             alt={service.title}
-            className="w-full h-full object-cover opacity-0 group-hover:opacity-100 transition-all duration-500 group-hover:scale-105"
+            className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-500"
           />
         </div>
-        {/* Content */}
-        <div className="p-6 flex-1 flex flex-col justify-center">
-          <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-slate-500 transition-colors duration-300">{service.title}</h3>
-          <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">{service.description}</p>
-          <a
-            href={service.link}
-            className="inline-flex items-center gap-2 text-slate-500 hover:text-slate-600 font-semibold text-sm transition-all duration-300 group/link"
-          >
-            إنتقل
-            <ExternalLink className="w-4 h-4 transition-transform group-hover/link:-translate-x-1" />
-          </a>
+
+        {/* Logo Icon - Top Right */}
+        <div className="absolute top-3 right-3 w-8 h-8 md:w-10 md:h-10 bg-white rounded-lg shadow-md flex items-center justify-center p-1 z-10">
+          <img
+            src={service.logo}
+            alt="logo"
+            className="w-full h-full object-contain"
+            onError={(e) => {
+              e.target.style.display = 'none';
+            }}
+          />
         </div>
+
+        {/* Utility Icon/Badge - Top Left */}
+        <div className="absolute top-3 left-3 w-8 h-8 bg-white/10 backdrop-blur-sm rounded-lg flex items-center justify-center border border-white/20">
+          <ExternalLink className="w-4 h-4 text-white/80" />
+        </div>
+      </div>
+
+      {/* Content Body */}
+      <div className="p-4 flex-1 flex flex-col">
+        <div className="mb-auto">
+          <h3 className="text-lg font-bold text-[#0F172B] mb-1">{service.title}</h3>
+
+          <p className="text-[#6B7280] text-xs leading-relaxed line-clamp-3 mt-1 font-medium">
+            {service.description}
+          </p>
+        </div>
+
+        {/* CTA Button */}
+        <a
+          href={service.link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 w-full bg-[#0F172B] hover:bg-[#1e293b] text-white py-2 px-3 rounded-lg flex items-center justify-center gap-2 text-xs font-bold transition-colors"
+        >
+          <span>زيارة الموقع</span>
+          <ArrowLeft className="w-3 h-3" />
+        </a>
       </div>
     </motion.div>
   )
 }
 
 function App() {
-  const heroRef = useRef(null)
-  const subtitleRef = useRef(null)
-  const titleRef = useRef(null)
-  const titleAccentRef = useRef(null)
-  const descRef = useRef(null)
-  const ctaRef = useRef(null)
-  const bgGlowRef = useRef(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Hero text animations - line by line, RTL friendly
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } })
-
-      // Animate each element with stagger
-      tl.fromTo(subtitleRef.current,
-        { opacity: 0, x: 50 },
-        { opacity: 1, x: 0, duration: 0.8 }
-      )
-      .fromTo(titleRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 1 },
-        '-=0.4'
-      )
-      .fromTo(titleAccentRef.current,
-        { opacity: 0, x: 50 },
-        { opacity: 1, x: 0, duration: 0.8 },
-        '-=0.5'
-      )
-      .fromTo(descRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 1 },
-        '-=0.4'
-      )
-      .fromTo(ctaRef.current,
-        { opacity: 0, scale: 0.9 },
-        { opacity: 1, scale: 1, duration: 0.6 },
-        '-=0.3'
-      )
-
-      // Background glow animation on scroll
-      gsap.to(bgGlowRef.current, {
-        opacity: 0.15,
-        duration: 2,
-        ease: 'power2.inOut',
-        scrollTrigger: {
-          trigger: '#services',
-          start: 'top 80%',
-          end: 'top 20%',
-          scrub: 1,
-          toggleActions: 'play none none reverse'
-        }
-      })
-
-      // Subtle pulsing glow effect
-      gsap.to(bgGlowRef.current, {
-        filter: 'blur(80px) brightness(1.3)',
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: 'sine.inOut'
-      })
-    }, heroRef)
-
-    return () => ctx.revert()
-  }, [])
-
   return (
-    <div ref={heroRef} className="relative min-h-screen">
-      {/* Background glow overlay */}
-      <div
-        ref={bgGlowRef}
-        className="fixed inset-0 pointer-events-none z-[1] opacity-0"
-        style={{
-          background: 'radial-gradient(ellipse at center, rgba(148, 163, 184, 0.3) 0%, transparent 70%)',
-          filter: 'blur(60px)'
-        }}
-      />
-      {/* Content */}
-      <div className="relative z-10">
-        {/* Hero Section */}
-        <header className="min-h-[60vh] flex flex-col items-center justify-center px-6 py-20">
-          <div className="text-center max-w-4xl">
-            <span
-              ref={subtitleRef}
-              className="text-slate-500 font-medium tracking-widest text-sm uppercase mb-4 block opacity-0"
-            >
-              المشاريع ونبذة عنها
-            </span>
-            <h1 className="text-5xl md:text-7xl font-bold text-gray-800 mb-6 leading-tight">
-              <span ref={titleRef} className="block opacity-0">تمكين رحلتك</span>
-              <span ref={titleAccentRef} className="block text-slate-500 opacity-0">الرقمية</span>
-            </h1>
-            <p
-              ref={descRef}
-              className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-10 opacity-0"
-            >
-              نقدم حلولًا رقمية مبتكرة ترتقي بتجربة المستخدم وتُبسّط سير  العمل بكفاءة.
-              نعتمد منهجية احترافية تجمع بين الإبداع والدقة، ونطوّر منصات وأدوات ذكية
-              تدعم التحول الرقمي وتعزّز الأتمتة لرفع الأداء وتحقيق نتائج قابلة للقياس.
-            </p>
-            <a
-              ref={ctaRef}
-              href="#services"
-              className="inline-flex items-center gap-2 text-gray-600 hover:text-slate-500 transition-colors opacity-0"
-            >
-              <span className="text-sm font-medium">اكتشف</span>
-              <ArrowRight className="w-4 h-4 animate-bounce" />
-            </a>
-          </div>
-        </header>
+    <div className="min-h-screen bg-[#F7F9FC] font-tajawal selection:bg-[#0F172B] selection:text-white">
+      {/* Hero Section */}
+      <header className="relative w-full py-20 md:py-32 overflow-hidden flex items-center justify-center">
+        {/* Silky Background Effect */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-gray-100 to-slate-200 opacity-80"></div>
+          {/* Abstract Waves/Blur */}
+          <div className="absolute top-0 left-0 right-0 h-full opacity-30 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-white via-slate-200 to-transparent blur-3xl transform -translate-y-1/4"></div>
+          <div className="absolute bottom-0 left-1/3 w-2/3 h-2/3 bg-gradient-to-t from-white via-transparent to-transparent z-10"></div>
+        </div>
 
-        {/* Services Section */}
-        <section id="services" className="px-6 py-5 max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="text-center mb-4"
-          >
-            <span className="text-slate-500 font-medium tracking-widest text-sm uppercase mb-4 block">
-              الخدمات
-            </span>
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800">خدماتنا</h2>
-          </motion.div>
+        <div className="relative z-10 container mx-auto px-4 text-center">
+          <span className="text-slate-500 font-medium tracking-widest text-sm uppercase mb-4 block">
+            المشاريع ونبذة عنها
+          </span>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight leading-tight text-gray-800">
+            <span className="block">تمكين رحلتك</span>
+            <span className="block text-[#485466]">الرقمية</span>
+          </h1>
 
-          {/* All cards in 2-column grid */}
-          <div className="grid grid-cols-2 lg:grid-cols-2 gap-20">
-            {services.map((service, index) => (
-              <ServiceCard key={service.id} service={service} index={index} />
-            ))}
-          </div>
-        </section>
+          <p className="text-lg md:text-xl text-[#6B7280] max-w-2xl mx-auto mb-8 leading-relaxed">
+            نقدم حلولًا رقمية مبتكرة ترتقي بتجربة المستخدم وتُبسّط سير العمل بكفاءة.
+            نعتمد منهجية احترافية تجمع بين الإبداع والدقة، ونطوّر منصات وأدوات ذكية
+            تدعم التحول الرقمي وتعزّز الأتمتة لرفع الأداء وتحقيق نتائج قابلة للقياس.
+          </p>
 
-        {/* Footer */}
-        <footer className="py-12 text-center text-gray-550 text-sm">
-          <p>&copy; 2026</p>
-        </footer>
-      </div>
+          <a href="#services" className="inline-block bg-[#0F172B] text-white px-8 py-3 rounded-full text-sm font-bold shadow-lg shadow-slate-900/10 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300">
+            اكتشف
+          </a>
+        </div>
+      </header>
+
+      {/* Services Grid Section */}
+      <section id="services" className="relative z-20 py-12 px-4 md:px-8 max-w-[1400px] mx-auto">
+        <div className="text-center mb-12">
+          <span className="text-slate-500 font-medium tracking-widest text-sm uppercase mb-2 block">
+            الخدمات
+          </span>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0F172B]">خدماتنا</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 md:gap-8">
+          {services.map((service, index) => (
+            <ServiceCard key={service.id} service={service} index={index} />
+          ))}
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 text-center text-slate-400 text-sm bg-white/50 border-t border-slate-100">
+        <p>&copy; {new Date().getFullYear()} جميع الحقوق محفوظة</p>
+      </footer>
     </div>
   )
 }
 
 export default App
+
