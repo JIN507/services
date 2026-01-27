@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink, LogOut } from 'lucide-react';
 import { ThemeProvider } from './context/ThemeContext';
 import ThemeToggle from './components/ThemeToggle';
-import LoginPage from './components/LoginPage';
+import LoginPage, { verifyToken } from './components/LoginPage';
 
 const services = [
   {
@@ -243,21 +243,6 @@ function MainContent({ onLogout }) {
 }
 
 const TOKEN_KEY = 'auth_token';
-const AUTH_API = import.meta.env.PROD ? '/api/auth' : '/.netlify/functions/auth';
-
-async function verifyToken(token) {
-  try {
-    const response = await fetch(AUTH_API, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ action: 'verify', token })
-    });
-    const data = await response.json();
-    return data.valid === true;
-  } catch {
-    return false;
-  }
-}
 
 function getStoredToken() {
   return sessionStorage.getItem(TOKEN_KEY);

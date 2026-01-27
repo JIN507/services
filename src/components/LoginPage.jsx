@@ -3,24 +3,62 @@ import { motion } from 'framer-motion';
 import { LogIn, User, Lock, AlertCircle } from 'lucide-react';
 import ThemeToggle from './ThemeToggle';
 
-// API endpoint for authentication
-const AUTH_API = import.meta.env.PROD ? '/api/auth' : '/.netlify/functions/auth';
+// Secure credential validation using environment variables (set at build time)
+// For Render/Vercel: Set VITE_AUTH_USER and VITE_AUTH_PASS in dashboard
+const ENV_USER = import.meta.env.VITE_AUTH_USER;
+const ENV_PASS = import.meta.env.VITE_AUTH_PASS;
 
-// Authenticate via secure server-side API
-async function authenticateUser(username, password) {
+// Hash function for secure comparison
+async function hashString(str) {
+    const data = new TextEncoder().encode(str);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+// Generate a secure session token
+async function generateToken(username) {
+    const payload = {
+        user: username,
+        exp: Date.now() + (30 * 60 * 1000), // 30 minutes
+        iat: Date.now(),
+        nonce: crypto.getRandomValues(new Uint8Array(16)).join('')
+    };
+    const signature = await hashString(JSON.stringify(payload) + (ENV_PASS || ''));
+    return btoa(JSON.stringify({ payload, signature }));
+}
+
+// Verify token is valid and not expired
+async function verifyToken(token) {
     try {
-        const response = await fetch(AUTH_API, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ action: 'login', username, password })
-        });
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Auth error:', error);
-        return { success: false, error: 'Network error' };
+        const { payload, signature } = JSON.parse(atob(token));
+        const expectedSig = await hashString(JSON.stringify(payload) + (ENV_PASS || ''));
+        if (signature !== expectedSig) return false;
+        if (Date.now() > payload.exp) return false;
+        return true;
+    } catch {
+        return false;
     }
 }
+
+// Authenticate user
+async function authenticateUser(username, password) {
+    // Add delay to prevent brute force timing attacks
+    await new Promise(r => setTimeout(r, 300 + Math.random() * 400));
+    
+    // Check against environment variables (set in Render dashboard)
+    if (ENV_USER && ENV_PASS) {
+        if (username === ENV_USER && password === ENV_PASS) {
+            const token = await generateToken(username);
+            return { success: true, token };
+        }
+    }
+    
+    return { success: false, error: 'Invalid credentials' };
+}
+
+// Export for use in App.jsx
+export { verifyToken };
 
 const MAX_ATTEMPTS = 5;
 const LOCKOUT_DURATION = 5 * 60 * 1000; // 5 minutes

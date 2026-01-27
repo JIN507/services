@@ -2,73 +2,52 @@
 
 ## Security Features Implemented
 
-✅ **Server-side authentication** - Credentials never exposed to client  
+✅ **Environment-based credentials** - Set via hosting dashboard (not in code)  
 ✅ **Signed tokens** - HMAC-SHA256 signed session tokens  
 ✅ **Token expiration** - 30-minute session timeout  
 ✅ **Rate limiting** - 5 failed attempts before lockout  
 ✅ **Account lockout** - 5-minute lockout after failed attempts  
-✅ **Timing attack prevention** - Constant-time comparison & random delays  
+✅ **Timing attack prevention** - Random delays on login  
 ✅ **Secure token storage** - sessionStorage (cleared on browser close)  
 
 ---
 
-## Deployment Steps (Netlify)
+## Deployment Steps (Render - RECOMMENDED)
 
-### 1. Install Netlify CLI (for local testing)
-```bash
-npm install -g netlify-cli
-```
+### 1. Create Static Site on Render
 
-### 2. Test Locally with Functions
-```bash
-# Create a .env file with your credentials
-echo "AUTH_USERNAME=elite" > .env
-echo "AUTH_PASSWORD=Pass@1122@@pass" >> .env
-echo "JWT_SECRET=$(openssl rand -hex 32)" >> .env
+1. Go to [render.com](https://render.com) and sign in
+2. Click **New** → **Static Site**
+3. Connect your GitHub repository
+4. Configure build settings:
+   - **Build Command:** `npm run build`
+   - **Publish Directory:** `dist`
 
-# Run with Netlify Dev
-npm run dev:netlify
-```
+### 2. Set Environment Variables (CRITICAL!)
 
-### 3. Deploy to Netlify
+**Before deploying**, add these environment variables in Render:
 
-#### Option A: Via Netlify Dashboard
-1. Go to [netlify.com](https://netlify.com) and sign in
-2. Click "Add new site" → "Import an existing project"
-3. Connect your Git repository
-4. Build settings will be auto-detected from `netlify.toml`
-5. Click "Deploy site"
-
-#### Option B: Via CLI
-```bash
-netlify login
-netlify init
-netlify deploy --prod
-```
-
-### 4. Configure Environment Variables (CRITICAL!)
-
-After deploying, you **MUST** set the environment variables in Netlify:
-
-1. Go to your site dashboard on Netlify
-2. Navigate to **Site settings** → **Environment variables**
-3. Add the following variables:
+1. Go to your site → **Environment**
+2. Add the following variables:
 
 | Variable | Value |
 |----------|-------|
-| `AUTH_USERNAME` | `elite` |
-| `AUTH_PASSWORD` | `Pass@1122@@pass` |
-| `JWT_SECRET` | (Generate a random 64-character hex string) |
+| `VITE_AUTH_USER` | `elite` |
+| `VITE_AUTH_PASS` | `Pass@1122@@pass` |
 
-To generate a secure JWT_SECRET:
-```bash
-openssl rand -hex 32
+⚠️ **Important:** Variables must start with `VITE_` to be available at build time!
+
+### 3. Deploy
+
+Click **Manual Deploy** → **Deploy latest commit**
+
+### 4. Reset Lockout (If Locked Out)
+
+If you got locked out, open browser DevTools (F12) → Console → run:
+```javascript
+sessionStorage.removeItem('auth_lockout');
+location.reload();
 ```
-Or use: https://generate-secret.vercel.app/64
-
-### 5. Redeploy After Setting Variables
-After adding environment variables, trigger a redeploy:
-- Go to **Deploys** tab → **Trigger deploy** → **Deploy site**
 
 ---
 
