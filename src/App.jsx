@@ -1,7 +1,9 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink } from 'lucide-react';
+import { ArrowLeft, ExternalLink, LogOut } from 'lucide-react';
 import { ThemeProvider } from './context/ThemeContext';
 import ThemeToggle from './components/ThemeToggle';
+import LoginPage from './components/LoginPage';
 
 const services = [
   {
@@ -175,9 +177,7 @@ function HeroSection() {
           transition={{ duration: 0.6 }}
         >
           {/* Glass Badge */}
-          <span className="inline-block py-1.5 px-4 rounded-full bg-slate-200/50 dark:bg-white/10 backdrop-blur-md border border-slate-300/50 dark:border-white/10 text-slate-700 dark:text-slate-200 text-xs font-bold tracking-wider mb-8 shadow-sm">
-            المشاريع ونبذة عنها
-          </span>
+
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-8 tracking-tight leading-tight text-slate-900 dark:text-white drop-shadow-sm">
             تمكين رحلتك <span className="text-slate-500 dark:text-slate-400">الرقمية</span>
@@ -193,7 +193,7 @@ function HeroSection() {
             href="#services"
             className="inline-flex items-center gap-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-8 py-4 rounded-full text-sm font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 hover:bg-slate-800 dark:hover:bg-slate-100"
           >
-            <span>اكتشف خدماتنا</span>
+            <span>الأنظمة والأدوات</span>
             <ArrowLeft className="w-4 h-4" />
           </a>
         </motion.div>
@@ -202,17 +202,28 @@ function HeroSection() {
   );
 }
 
-function MainContent() {
+function MainContent({ onLogout }) {
   return (
     <div className="min-h-screen bg-slate-50 dark:bg-navy-950 text-slate-900 dark:text-white transition-colors duration-300 selection:bg-primary selection:text-white">
       <ThemeToggle />
+
+      {/* Logout Button */}
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={onLogout}
+        className="fixed top-4 right-4 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/80 dark:bg-navy-800/80 backdrop-blur-md border border-slate-200 dark:border-navy-700 shadow-lg text-slate-700 dark:text-slate-200 transition-colors duration-300 hover:bg-red-50 hover:text-red-600 hover:border-red-200 dark:hover:bg-red-900/20 dark:hover:text-red-400 dark:hover:border-red-800"
+      >
+        <span className="text-sm font-bold">تسجيل الخروج</span>
+        <LogOut className="w-4 h-4" />
+      </motion.button>
 
       <HeroSection />
 
       {/* Services Grid Section */}
       <section id="services" className="relative z-20 py-20 px-4 md:px-8 container mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3">خدماتنا</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-white mb-3">الحلول التقنية</h2>
           <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
         </div>
 
@@ -225,16 +236,102 @@ function MainContent() {
 
       {/* Footer */}
       <footer className="py-10 text-center text-slate-500 dark:text-slate-400 text-sm bg-white dark:bg-navy-900 border-t border-slate-200 dark:border-navy-800 transition-colors duration-300">
-        <p>&copy; {new Date().getFullYear()} جميع الحقوق محفوظة</p>
+        <p>&copy; {new Date().getFullYear()} الحلول التقنية</p>
       </footer>
     </div>
   );
 }
 
+const TOKEN_KEY = 'auth_token';
+const AUTH_API = import.meta.env.PROD ? '/api/auth' : '/.netlify/functions/auth';
+
+async function verifyToken(token) {
+  try {
+    const response = await fetch(AUTH_API, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'verify', token })
+    });
+    const data = await response.json();
+    return data.valid === true;
+  } catch {
+    return false;
+  }
+}
+
+function getStoredToken() {
+  return sessionStorage.getItem(TOKEN_KEY);
+}
+
+function storeToken(token) {
+  sessionStorage.setItem(TOKEN_KEY, token);
+}
+
+function clearToken() {
+  sessionStorage.removeItem(TOKEN_KEY);
+}
+
 export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Check if there's a valid token on mount
+    const checkAuth = async () => {
+      const token = getStoredToken();
+      if (token) {
+        const isValid = await verifyToken(token);
+        setIsLoggedIn(isValid);
+        if (!isValid) clearToken();
+      }
+      setIsLoading(false);
+    };
+    checkAuth();
+  }, []);
+
+  useEffect(() => {
+    // Periodically verify token
+    if (!isLoggedIn) return;
+    
+    const interval = setInterval(async () => {
+      const token = getStoredToken();
+      if (!token || !(await verifyToken(token))) {
+        clearToken();
+        setIsLoggedIn(false);
+      }
+    }, 60000); // Check every minute
+    
+    return () => clearInterval(interval);
+  }, [isLoggedIn]);
+
+  const handleLoginSuccess = (token) => {
+    storeToken(token);
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    clearToken();
+    setIsLoggedIn(false);
+  };
+
+  // Show loading while checking auth
+  if (isLoading) {
+    return (
+      <ThemeProvider>
+        <div className="min-h-screen bg-slate-50 dark:bg-navy-950 flex items-center justify-center">
+          <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+        </div>
+      </ThemeProvider>
+    );
+  }
+
   return (
     <ThemeProvider>
-      <MainContent />
+      {isLoggedIn ? (
+        <MainContent onLogout={handleLogout} />
+      ) : (
+        <LoginPage onLoginSuccess={handleLoginSuccess} />
+      )}
     </ThemeProvider>
   );
 }
