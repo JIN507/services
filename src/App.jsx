@@ -52,7 +52,7 @@ const services = [
     description: "موقع مصمم لتفريغ الفيديو من منصة جاكو وقرائته وفهم محتواياته لإنشاء تعليقات مناسبة وفريدة لكل فيديو",
     image: "/images/jako.png",
     logo: "/images/logos/jaco logo.png",
-    link: "http://46.202.140.7:5003/"
+    link: "http://108.181.169.216:5679/"
   },
   {
     id: 7,
@@ -69,7 +69,7 @@ const services = [
     description: "هو موقع يهتم يجلب الوسوم حسب الدوله وكلمات دلاليه ويقوم بحفظ الوسم وعدد تغريداته ودولته او مدينته والوقت والتاريخ في قاعده بيانات",
     image: "/images/watcher.png",
     logo: "/images/logos/watcher logo.png",
-    link: "http://46.202.140.7:8501/"
+    link: "http://108.181.169.216:8501/"
   },
   {
     id: 9,
