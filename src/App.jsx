@@ -238,11 +238,14 @@ function MainContent({ onLogout }) {
           <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-          {services.map((service, index) => (
-            <ServiceCard key={service.id} service={service} index={index} />
-          ))}
-        </div>
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+  {services
+    .filter(service => !service.hidden)
+    .map((service, index) => (
+      <ServiceCard key={service.id} service={service} index={index} />
+    ))}
+</div>
+    
       </section>
 
       {/* Footer */}
