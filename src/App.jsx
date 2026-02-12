@@ -19,7 +19,7 @@ const services = [
     id: 2,
     title: "منصة عين",
     hidden: false,
-    description: "منصّة إلكترونية تهدف إلى مساعدة المستخدمين على متابعة والاطّلاع على الأحداث العالمية والمحلية عبر مصادر صحفية رسمية وغير رسمية من عدّة دول. ",
+    description: "منصّة إلكترونية تهدف إلى مساعدة المستخدمين على متابعةالأحداث الاخبارية عبر مصادر صحفية رسمية من عدّة دول. ",
     image: "/images/ain.png",
     logo: "/images/logos/ain logo.png",
     link: "https://ain-4m6r.onrender.com/"
@@ -238,14 +238,14 @@ function MainContent({ onLogout }) {
           <div className="h-1 w-20 bg-primary mx-auto rounded-full"></div>
         </div>
 
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
   {services
     .filter(service => !service.hidden)
     .map((service, index) => (
       <ServiceCard key={service.id} service={service} index={index} />
     ))}
 </div>
-    
+
       </section>
 
       {/* Footer */}
