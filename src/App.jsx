@@ -9,6 +9,7 @@ const services = [
   {
     id: 1,
     title: "منصة خطى",
+    hidden: true,
     description: " منصة مصممة لمتابعة الأعمال والمهام وتوثيقها وعرض إحصائيات تصويرية ورقمية للبيانات و تييسر حركة سير العمل الإداري وأرشفة الأعمال اليومية",
     image: "/images/steps.png",
     logo: "/images/logos/steps logo.png",
@@ -17,6 +18,7 @@ const services = [
   {
     id: 2,
     title: "منصة عين",
+    hidden: false,
     description: "منصّة إلكترونية تهدف إلى مساعدة المستخدمين على متابعة والاطّلاع على الأحداث العالمية والمحلية عبر مصادر صحفية رسمية وغير رسمية من عدّة دول. ",
     image: "/images/ain.png",
     logo: "/images/logos/ain logo.png",
@@ -25,6 +27,7 @@ const services = [
   {
     id: 3,
     title: "تحقق",
+    hidden: false,
     description: "موقع إلكتروني يهدف إلى مساعدة المستخدمين في التحقّق من صحّة المحتوى الرقمي  الصور,الفيديوهات,الأخبار والصوت بكل سهولة.",
     image: "/images/t788.png",
     logo: "/images/logos/t788 logo.png",
@@ -33,6 +36,7 @@ const services = [
   {
     id: 4,
     title: "مدقق المحتوى",
+    hidden: true,
     description: "هو موقع يقوم بتدقيق وتحليل المحتوى بناء على عدة عوامل ويصدر تقرير تفصيلي بذلك.",
     image: "/images/checker.png",
     logo: "/images/logos/checker logo.png",
@@ -41,6 +45,7 @@ const services = [
   {
     id: 5,
     title: "عين كاست",
+    hidden: true,
     description: "نظام بودكاست يعتمد على الذكاء الاصطناعي لتمكين إنتاج محتوى صوتي  بكفاءة,المعالجة الصوتية، التحرير، تحسين الجودة،وإدارة المحتوى،",
     image: "/images/aincast.png",
     logo: "/images/logos/aincastlogo.ico",
@@ -49,6 +54,7 @@ const services = [
   {
     id: 6,
     title: "تعليقات جاكو",
+    hidden: true,
     description: "موقع مصمم لتفريغ الفيديو من منصة جاكو وقرائته وفهم محتواياته لإنشاء تعليقات مناسبة وفريدة لكل فيديو",
     image: "/images/jako.png",
     logo: "/images/logos/jaco logo.png",
@@ -57,6 +63,7 @@ const services = [
   {
     id: 7,
     title: "تصدر",
+    hidden: false,
     description: "موقع مساعد لتحسين وكشف أخطاء وقياس نقاط الضعف والقوة للردود على منصة  X لتكون الردود أكثر جذبا للتفاعل",
     image: "/images/t9dr.png",
     logo: "/images/logos/t9dr logo.png",
@@ -66,6 +73,7 @@ const services = [
   {
     id: 8,
     title: "راقب",
+    hidden: false,
     description: "هو موقع يهتم يجلب الوسوم حسب الدوله وكلمات دلاليه ويقوم بحفظ الوسم وعدد تغريداته ودولته او مدينته والوقت والتاريخ في قاعده بيانات",
     image: "/images/watcher.png",
     logo: "/images/logos/watcher logo.png",
@@ -74,6 +82,7 @@ const services = [
   {
     id: 9,
     title: "قياس متوسط التفاعل",
+    hidden: false,
     description: "هو نظام محلي لتحليل تفاعل الحسابات على منصة أكس من حيث معدل التفاعل، وقياس قوة المحتوى",
     image: "/images/qyas.png",
     logo: "/images/logos/qyas logo.png",
@@ -82,6 +91,7 @@ const services = [
   {
     id: 10,
     title: "مولد الهوية بالذكاء الاصطناعي",
+    hidden: true,
     description: "موقع يقوم بتوليد هوية متكاملة بواسطة الذكاء الاصطناعي ، حيث يولد صورة مناسبة مع هيدر وصورة بايو تتناسب مع شخصية وتوجه الحساب.",
     image: "/images/hawiah.png",
     logo: "/images/logos/hawiah logo.png",
@@ -90,6 +100,7 @@ const services = [
   {
     id: 11,
     title: "استديو الصور",
+    hidden: true,
     description: "موقع شامل لتعديل الصور وإنشاءها والعديد من الوظائف:استعراض الزوايا,تعديل الأنماط,التصميم الداخلي والكثير من الخصائص الفنية.",
     image: "/images/studio.png",
     logo: "/images/logos/studio logo.png",
